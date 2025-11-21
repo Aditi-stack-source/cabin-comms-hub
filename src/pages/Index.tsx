@@ -1,11 +1,46 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { TimeDisplay } from '@/components/TimeDisplay';
+import { WeatherDisplay } from '@/components/WeatherDisplay';
+import { TrainDisplay } from '@/components/TrainDisplay';
+import { Activity } from 'lucide-react';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-background p-6">
+      <div className="max-w-7xl mx-auto space-y-6">
+        {/* Header */}
+        <header className="border-b border-border pb-4">
+          <div className="flex items-center gap-3">
+            <Activity className="w-8 h-8 text-primary animate-pulse" />
+            <div>
+              <h1 className="text-3xl font-bold tracking-tight text-foreground">
+                CABIN SIDE CONTROL
+              </h1>
+              <p className="text-muted-foreground text-sm tracking-wider uppercase">
+                Real-time Transit Monitoring System
+              </p>
+            </div>
+          </div>
+        </header>
+
+        {/* Top Row - Time & Weather */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <TimeDisplay />
+          <WeatherDisplay />
+        </div>
+
+        {/* Train Information */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <TrainDisplay direction="upline" />
+          <TrainDisplay direction="downline" />
+        </div>
+
+        {/* Footer */}
+        <footer className="border-t border-border pt-4 text-center">
+          <p className="text-muted-foreground text-xs tracking-wider">
+            System Status: <span className="text-status-online">OPERATIONAL</span> • 
+            Last Update: {new Date().toLocaleTimeString('en-US', { hour12: false })}
+          </p>
+        </footer>
       </div>
     </div>
   );
