@@ -1,6 +1,7 @@
 import { TimeDisplay } from '@/components/TimeDisplay';
 import { WeatherDisplay } from '@/components/WeatherDisplay';
 import { TrainDisplay } from '@/components/TrainDisplay';
+import { CircuitBoardDisplay } from '@/components/CircuitBoardDisplay';
 import { Activity } from 'lucide-react';
 
 const Index = () => {
@@ -33,6 +34,9 @@ const Index = () => {
           <TrainDisplay direction="upline" />
           <TrainDisplay direction="downline" />
         </div>
+
+        {/* Circuit Board Display */}
+        <CircuitBoardDisplay />
 
         {/* Footer */}
         <footer className="border-t border-border pt-4 text-center">
