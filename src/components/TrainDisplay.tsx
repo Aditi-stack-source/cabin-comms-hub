@@ -6,6 +6,7 @@ import { ArrowUp, ArrowDown, Train } from 'lucide-react';
 interface TrainInfo {
   id: string;
   destination: string;
+  location: string;
   eta: string;
   status: 'on-time' | 'delayed' | 'offline';
   platform: string;
@@ -24,11 +25,16 @@ export const TrainDisplay = ({ direction }: TrainDisplayProps) => {
     const generateTrains = (): TrainInfo[] => {
       const uplineTrains = ['Train #A402', 'Train #B305', 'Train #C118'];
       const downlineTrains = ['Train #D201', 'Train #E504', 'Train #F307'];
+      const uplineLocations = ['Central Station', 'North Terminal', 'Airport'];
+      const downlineLocations = ['South Harbor', 'West Junction', 'East End'];
+      
       const data = direction === 'upline' ? uplineTrains : downlineTrains;
+      const locations = direction === 'upline' ? uplineLocations : downlineLocations;
       
       return data.map((dest, i) => ({
         id: `${direction}-${i + 1}`,
         destination: dest,
+        location: locations[i],
         eta: `${3 + i * 5} min`,
         status: ['on-time', 'on-time', 'delayed'][Math.floor(Math.random() * 3)] as TrainInfo['status'],
         platform: `${Math.floor(Math.random() * 4) + 1}`,
@@ -77,11 +83,16 @@ export const TrainDisplay = ({ direction }: TrainDisplayProps) => {
               className="bg-muted/30 border border-border rounded p-4 hover:border-primary/50 transition-colors"
             >
               <div className="flex items-start justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <Train className="w-5 h-5 text-primary" />
-                  <span className="font-semibold text-lg text-foreground">
-                    {train.destination}
-                  </span>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <Train className="w-5 h-5 text-primary" />
+                    <span className="font-semibold text-lg text-foreground">
+                      {train.destination}
+                    </span>
+                  </div>
+                  <div className="text-muted-foreground text-sm mt-1 ml-7">
+                    Location: {train.location}
+                  </div>
                 </div>
                 <Badge variant="outline" className={getStatusColor(train.status)}>
                   {train.status.toUpperCase()}
