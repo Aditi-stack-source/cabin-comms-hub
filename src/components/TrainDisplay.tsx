@@ -22,11 +22,11 @@ export const TrainDisplay = ({ direction }: TrainDisplayProps) => {
   useEffect(() => {
     // Simulate train data (replace with real API)
     const generateTrains = (): TrainInfo[] => {
-      const destinations = direction === 'upline' 
-        ? ['Central Station', 'North Terminal', 'Airport']
-        : ['South Harbor', 'West Junction', 'East End'];
+      const uplineTrains = ['Train #A402', 'Train #B305', 'Train #C118'];
+      const downlineDestinations = ['South Harbor', 'West Junction', 'East End'];
+      const data = direction === 'upline' ? uplineTrains : downlineDestinations;
       
-      return destinations.map((dest, i) => ({
+      return data.map((dest, i) => ({
         id: `${direction}-${i + 1}`,
         destination: dest,
         eta: `${3 + i * 5} min`,
