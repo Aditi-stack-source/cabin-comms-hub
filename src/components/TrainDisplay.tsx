@@ -23,8 +23,8 @@ export const TrainDisplay = ({ direction }: TrainDisplayProps) => {
     // Simulate train data (replace with real API)
     const generateTrains = (): TrainInfo[] => {
       const uplineTrains = ['Train #A402', 'Train #B305', 'Train #C118'];
-      const downlineDestinations = ['South Harbor', 'West Junction', 'East End'];
-      const data = direction === 'upline' ? uplineTrains : downlineDestinations;
+      const downlineTrains = ['Train #D201', 'Train #E504', 'Train #F307'];
+      const data = direction === 'upline' ? uplineTrains : downlineTrains;
       
       return data.map((dest, i) => ({
         id: `${direction}-${i + 1}`,
