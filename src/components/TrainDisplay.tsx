@@ -23,10 +23,10 @@ export const TrainDisplay = ({ direction }: TrainDisplayProps) => {
   useEffect(() => {
     // Simulate train data (replace with real API)
     const generateTrains = (): TrainInfo[] => {
-      const uplineTrains = ['Train #A402', 'Train #B305', 'Train #C118'];
-      const downlineTrains = ['Train #D201', 'Train #E504', 'Train #F307'];
-      const uplineLocations = ['Central Station', 'North Terminal', 'Airport'];
-      const downlineLocations = ['South Harbor', 'West Junction', 'East End'];
+      const uplineTrains = ['Train #A402', 'Train #B305'];
+      const downlineTrains = ['Train #D201', 'Train #E504'];
+      const uplineLocations = ['Central Station', 'North Terminal'];
+      const downlineLocations = ['South Harbor', 'West Junction'];
       
       const data = direction === 'upline' ? uplineTrains : downlineTrains;
       const locations = direction === 'upline' ? uplineLocations : downlineLocations;
@@ -63,53 +63,53 @@ export const TrainDisplay = ({ direction }: TrainDisplayProps) => {
   };
 
   return (
-    <Card className="bg-card border-border p-6">
-      <div className="space-y-4">
-        <div className="flex items-center gap-3">
+    <Card className="bg-card border-border p-3 h-full flex flex-col">
+      <div className="flex-1 flex flex-col min-h-0">
+        <div className="flex items-center gap-2 mb-2">
           {direction === 'upline' ? (
-            <ArrowUp className="w-6 h-6 text-primary" />
+            <ArrowUp className="w-5 h-5 text-primary" />
           ) : (
-            <ArrowDown className="w-6 h-6 text-secondary" />
+            <ArrowDown className="w-5 h-5 text-secondary" />
           )}
-          <div className="text-muted-foreground text-sm tracking-wider uppercase">
+          <div className="text-muted-foreground text-xs tracking-wider uppercase">
             {direction === 'upline' ? 'Upline Trains' : 'Downline Trains'}
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2 flex-1 overflow-auto">
           {trains.map((train) => (
             <div
               key={train.id}
-              className="bg-muted/30 border border-border rounded p-4 hover:border-primary/50 transition-colors"
+              className="bg-muted/30 border border-border rounded p-2 hover:border-primary/50 transition-colors"
             >
-              <div className="flex items-start justify-between mb-2">
+              <div className="flex items-start justify-between mb-1">
                 <div>
-                  <div className="flex items-center gap-2">
-                    <Train className="w-5 h-5 text-primary" />
-                    <span className="font-semibold text-lg text-foreground">
+                  <div className="flex items-center gap-1.5">
+                    <Train className="w-4 h-4 text-primary" />
+                    <span className="font-semibold text-sm text-foreground">
                       {train.destination}
                     </span>
                   </div>
-                  <div className="text-muted-foreground text-sm mt-1 ml-7">
-                    Location: {train.location}
+                  <div className="text-muted-foreground text-xs mt-0.5 ml-5">
+                    {train.location}
                   </div>
                 </div>
-                <Badge variant="outline" className={getStatusColor(train.status)}>
+                <Badge variant="outline" className={`${getStatusColor(train.status)} text-[10px] px-1.5 py-0`}>
                   {train.status.toUpperCase()}
                 </Badge>
               </div>
-              <div className="grid grid-cols-3 gap-4 text-sm">
+              <div className="grid grid-cols-3 gap-2 text-xs">
                 <div>
-                  <div className="text-muted-foreground text-xs uppercase">ETA</div>
-                  <div className="text-foreground font-semibold text-lg">{train.eta}</div>
+                  <div className="text-muted-foreground text-[10px] uppercase">ETA</div>
+                  <div className="text-foreground font-semibold text-sm">{train.eta}</div>
                 </div>
                 <div>
-                  <div className="text-muted-foreground text-xs uppercase">Platform</div>
-                  <div className="text-foreground font-semibold text-lg">{train.platform}</div>
+                  <div className="text-muted-foreground text-[10px] uppercase">Platform</div>
+                  <div className="text-foreground font-semibold text-sm">{train.platform}</div>
                 </div>
                 <div>
-                  <div className="text-muted-foreground text-xs uppercase">Distance</div>
-                  <div className="text-foreground font-semibold text-lg">{train.distance} km</div>
+                  <div className="text-muted-foreground text-[10px] uppercase">Distance</div>
+                  <div className="text-foreground font-semibold text-sm">{train.distance} km</div>
                 </div>
               </div>
             </div>
