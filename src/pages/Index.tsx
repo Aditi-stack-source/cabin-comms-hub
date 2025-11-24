@@ -6,17 +6,17 @@ import { Activity } from 'lucide-react';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
+    <div className="min-h-screen bg-background p-4">
+      <div className="max-w-7xl mx-auto space-y-4">
         {/* Header */}
-        <header className="border-b border-border pb-4">
-          <div className="flex items-center gap-3">
-            <Activity className="w-8 h-8 text-primary animate-pulse" />
+        <header className="border-b border-border pb-2">
+          <div className="flex items-center gap-2">
+            <Activity className="w-6 h-6 text-primary animate-pulse" />
             <div>
-              <h1 className="text-3xl font-bold tracking-tight text-foreground">
+              <h1 className="text-2xl font-bold tracking-tight text-foreground">
                 CABIN SIDE CONTROL
               </h1>
-              <p className="text-muted-foreground text-sm tracking-wider uppercase">
+              <p className="text-muted-foreground text-xs tracking-wider uppercase">
                 Real-time Transit Monitoring System
               </p>
             </div>
@@ -24,13 +24,13 @@ const Index = () => {
         </header>
 
         {/* Top Row - Time & Weather */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <TimeDisplay />
           <WeatherDisplay />
         </div>
 
         {/* Train Information */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <TrainDisplay direction="upline" />
           <TrainDisplay direction="downline" />
         </div>
@@ -39,7 +39,7 @@ const Index = () => {
         <CircuitBoardDisplay />
 
         {/* Footer */}
-        <footer className="border-t border-border pt-4 text-center">
+        <footer className="border-t border-border pt-2 text-center">
           <p className="text-muted-foreground text-xs tracking-wider">
             System Status: <span className="text-status-online">OPERATIONAL</span> • 
             Last Update: {new Date().toLocaleTimeString('en-US', { hour12: false })}

@@ -13,12 +13,12 @@ export const TimeDisplay = () => {
   }, []);
 
   return (
-    <Card className="bg-card border-border p-6">
-      <div className="space-y-2">
-        <div className="text-muted-foreground text-sm tracking-wider uppercase">
+    <Card className="bg-card border-border p-4">
+      <div className="space-y-1">
+        <div className="text-muted-foreground text-xs tracking-wider uppercase">
           System Time
         </div>
-        <div className="text-5xl font-bold tracking-tight tabular-nums text-primary">
+        <div className="text-3xl font-bold tracking-tight tabular-nums text-primary">
           {time.toLocaleTimeString('en-US', { 
             hour12: false,
             hour: '2-digit',
@@ -26,7 +26,7 @@ export const TimeDisplay = () => {
             second: '2-digit'
           })}
         </div>
-        <div className="text-muted-foreground text-lg">
+        <div className="text-muted-foreground text-sm">
           {time.toLocaleDateString('en-US', { 
             weekday: 'long',
             year: 'numeric',
