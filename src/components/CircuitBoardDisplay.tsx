@@ -56,14 +56,14 @@ export const CircuitBoardDisplay = () => {
 
   return (
     <Card className="border-primary/20">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Cpu className="w-5 h-5 text-primary" />
+      <CardHeader className="p-3">
+        <CardTitle className="flex items-center gap-2 text-sm">
+          <Cpu className="w-4 h-4 text-primary" />
           CIRCUIT BOARD - SYSTEM TOPOLOGY
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="relative w-full h-[400px] bg-background/50 rounded-lg border border-border/50 overflow-hidden">
+      <CardContent className="p-3 pt-0">
+        <div className="relative w-full h-[180px] bg-background/50 rounded-lg border border-border/50 overflow-hidden">
           {/* Grid Pattern */}
           <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -106,25 +106,27 @@ export const CircuitBoardDisplay = () => {
             >
               {/* Pulsing Ring */}
               <div className={`absolute inset-0 rounded-full ${getStatusColor(node.status)} opacity-20 animate-ping`} 
-                   style={{ width: '60px', height: '60px', left: '-20px', top: '-20px' }} />
+                   style={{ width: '40px', height: '40px', left: '-14px', top: '-14px' }} />
               
               {/* Node Circle */}
-              <div className={`relative w-10 h-10 rounded-full border-2 ${getStatusColor(node.status)} bg-background/90 backdrop-blur-sm flex items-center justify-center transition-all group-hover:scale-110`}>
-                {node.icon}
+              <div className={`relative w-6 h-6 rounded-full border-2 ${getStatusColor(node.status)} bg-background/90 backdrop-blur-sm flex items-center justify-center transition-all group-hover:scale-110`}>
+                <div className="scale-75">
+                  {node.icon}
+                </div>
               </div>
 
               {/* Info Card on Hover */}
-              <div className="absolute left-12 top-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
-                <Card className="w-48 border-primary/30 bg-background/95 backdrop-blur-sm">
-                  <CardContent className="p-3 space-y-1">
-                    <div className="font-bold text-sm">{node.name}</div>
-                    <div className="flex items-center justify-between text-xs">
+              <div className="absolute left-8 top-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                <Card className="w-36 border-primary/30 bg-background/95 backdrop-blur-sm">
+                  <CardContent className="p-2 space-y-0.5">
+                    <div className="font-bold text-xs">{node.name}</div>
+                    <div className="flex items-center justify-between text-[10px]">
                       <span className="text-muted-foreground">Status:</span>
-                      <Badge variant={node.status === 'online' ? 'default' : 'destructive'} className="text-xs">
+                      <Badge variant={node.status === 'online' ? 'default' : 'destructive'} className="text-[9px] px-1 py-0">
                         {node.status.toUpperCase()}
                       </Badge>
                     </div>
-                    <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center justify-between text-[10px]">
                       <span className="text-muted-foreground">Power:</span>
                       <span className={getStatusColor(node.status)}>{node.power.toFixed(1)}%</span>
                     </div>
@@ -135,28 +137,28 @@ export const CircuitBoardDisplay = () => {
           ))}
 
           {/* Corner Decorations */}
-          <div className="absolute top-2 left-2 text-primary/30 text-xs font-mono">NODE MAP</div>
-          <div className="absolute top-2 right-2 text-primary/30 text-xs font-mono">v2.3.1</div>
-          <div className="absolute bottom-2 left-2 text-primary/30 text-xs font-mono">
+          <div className="absolute top-1 left-1 text-primary/30 text-[9px] font-mono">NODE MAP</div>
+          <div className="absolute top-1 right-1 text-primary/30 text-[9px] font-mono">v2.3.1</div>
+          <div className="absolute bottom-1 left-1 text-primary/30 text-[9px] font-mono">
             SYS: {nodes.filter(n => n.status === 'online').length}/{nodes.length}
           </div>
-          <div className="absolute bottom-2 right-2 text-status-online text-xs font-mono animate-pulse">
+          <div className="absolute bottom-1 right-1 text-status-online text-[9px] font-mono animate-pulse">
             ● ACTIVE
           </div>
         </div>
 
         {/* Legend */}
-        <div className="flex gap-4 mt-4 text-xs">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-status-online animate-pulse" />
+        <div className="flex gap-3 mt-2 text-[10px]">
+          <div className="flex items-center gap-1.5">
+            <div className="w-2 h-2 rounded-full bg-status-online animate-pulse" />
             <span className="text-muted-foreground">Online</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-status-delayed animate-pulse" />
+          <div className="flex items-center gap-1.5">
+            <div className="w-2 h-2 rounded-full bg-status-delayed animate-pulse" />
             <span className="text-muted-foreground">Warning</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-status-offline" />
+          <div className="flex items-center gap-1.5">
+            <div className="w-2 h-2 rounded-full bg-status-offline" />
             <span className="text-muted-foreground">Offline</span>
           </div>
         </div>

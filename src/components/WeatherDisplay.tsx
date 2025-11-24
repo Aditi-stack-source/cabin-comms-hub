@@ -46,33 +46,35 @@ export const WeatherDisplay = () => {
   };
 
   return (
-    <Card className="bg-card border-border p-6">
-      <div className="space-y-4">
-        <div className="text-muted-foreground text-sm tracking-wider uppercase">
+    <Card className="bg-card border-border p-3">
+      <div className="space-y-2">
+        <div className="text-muted-foreground text-xs tracking-wider uppercase">
           Weather Conditions
         </div>
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-5xl font-bold text-foreground">
+            <div className="text-3xl font-bold text-foreground">
               {weather.temperature}°C
             </div>
-            <div className="text-lg text-muted-foreground mt-1">
+            <div className="text-sm text-muted-foreground mt-1">
               {weather.condition}
             </div>
           </div>
-          {getWeatherIcon()}
+          <div className="scale-75">
+            {getWeatherIcon()}
+          </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
+        <div className="grid grid-cols-2 gap-3 pt-2 border-t border-border">
           <div>
-            <div className="text-muted-foreground text-xs uppercase">Humidity</div>
-            <div className="text-xl font-semibold text-foreground">{weather.humidity}%</div>
+            <div className="text-muted-foreground text-[10px] uppercase">Humidity</div>
+            <div className="text-lg font-semibold text-foreground">{weather.humidity}%</div>
           </div>
           <div>
-            <div className="text-muted-foreground text-xs uppercase flex items-center gap-1">
-              <Wind className="w-3 h-3" />
+            <div className="text-muted-foreground text-[10px] uppercase flex items-center gap-1">
+              <Wind className="w-2.5 h-2.5" />
               Wind
             </div>
-            <div className="text-xl font-semibold text-foreground">{weather.windSpeed} km/h</div>
+            <div className="text-lg font-semibold text-foreground">{weather.windSpeed} km/h</div>
           </div>
         </div>
       </div>
