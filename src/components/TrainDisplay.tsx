@@ -63,53 +63,53 @@ export const TrainDisplay = ({ direction }: TrainDisplayProps) => {
   };
 
   return (
-    <Card className="bg-card border-border p-6">
-      <div className="space-y-4">
-        <div className="flex items-center gap-3">
+    <Card className="bg-card border-border p-3">
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
           {direction === 'upline' ? (
-            <ArrowUp className="w-6 h-6 text-primary" />
+            <ArrowUp className="w-4 h-4 text-primary" />
           ) : (
-            <ArrowDown className="w-6 h-6 text-secondary" />
+            <ArrowDown className="w-4 h-4 text-secondary" />
           )}
-          <div className="text-muted-foreground text-sm tracking-wider uppercase">
+          <div className="text-muted-foreground text-xs tracking-wider uppercase">
             {direction === 'upline' ? 'Upline Trains' : 'Downline Trains'}
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2">
           {trains.map((train) => (
             <div
               key={train.id}
-              className="bg-muted/30 border border-border rounded p-4 hover:border-primary/50 transition-colors"
+              className="bg-muted/30 border border-border rounded p-2 hover:border-primary/50 transition-colors"
             >
-              <div className="flex items-start justify-between mb-2">
+              <div className="flex items-start justify-between mb-1">
                 <div>
                   <div className="flex items-center gap-2">
-                    <Train className="w-5 h-5 text-primary" />
-                    <span className="font-semibold text-lg text-foreground">
+                    <Train className="w-4 h-4 text-primary" />
+                    <span className="font-semibold text-sm text-foreground">
                       {train.destination}
                     </span>
                   </div>
-                  <div className="text-muted-foreground text-sm mt-1 ml-7">
+                  <div className="text-muted-foreground text-xs mt-0.5 ml-6">
                     Location: {train.location}
                   </div>
                 </div>
-                <Badge variant="outline" className={getStatusColor(train.status)}>
+                <Badge variant="outline" className={`${getStatusColor(train.status)} text-xs py-0`}>
                   {train.status.toUpperCase()}
                 </Badge>
               </div>
-              <div className="grid grid-cols-3 gap-4 text-sm">
+              <div className="grid grid-cols-3 gap-2 text-sm">
                 <div>
                   <div className="text-muted-foreground text-xs uppercase">ETA</div>
-                  <div className="text-foreground font-semibold text-lg">{train.eta}</div>
+                  <div className="text-foreground font-semibold text-sm">{train.eta}</div>
                 </div>
                 <div>
                   <div className="text-muted-foreground text-xs uppercase">Platform</div>
-                  <div className="text-foreground font-semibold text-lg">{train.platform}</div>
+                  <div className="text-foreground font-semibold text-sm">{train.platform}</div>
                 </div>
                 <div>
                   <div className="text-muted-foreground text-xs uppercase">Distance</div>
-                  <div className="text-foreground font-semibold text-lg">{train.distance} km</div>
+                  <div className="text-foreground font-semibold text-sm">{train.distance} km</div>
                 </div>
               </div>
             </div>

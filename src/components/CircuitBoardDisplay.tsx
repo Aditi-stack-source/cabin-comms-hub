@@ -56,14 +56,14 @@ export const CircuitBoardDisplay = () => {
 
   return (
     <Card className="border-primary/20">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Cpu className="w-5 h-5 text-primary" />
+      <CardHeader className="py-2">
+        <CardTitle className="flex items-center gap-2 text-base">
+          <Cpu className="w-4 h-4 text-primary" />
           CIRCUIT BOARD - SYSTEM TOPOLOGY
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="relative w-full h-[400px] bg-background/50 rounded-lg border border-border/50 overflow-hidden">
+      <CardContent className="pb-3">
+        <div className="relative w-full h-[180px] bg-background/50 rounded-lg border border-border/50 overflow-hidden">
           {/* Grid Pattern */}
           <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -146,17 +146,17 @@ export const CircuitBoardDisplay = () => {
         </div>
 
         {/* Legend */}
-        <div className="flex gap-4 mt-4 text-xs">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-status-online animate-pulse" />
+        <div className="flex gap-3 mt-2 text-xs">
+          <div className="flex items-center gap-1">
+            <div className="w-2 h-2 rounded-full bg-status-online animate-pulse" />
             <span className="text-muted-foreground">Online</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-status-delayed animate-pulse" />
+          <div className="flex items-center gap-1">
+            <div className="w-2 h-2 rounded-full bg-status-delayed animate-pulse" />
             <span className="text-muted-foreground">Warning</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-status-offline" />
+          <div className="flex items-center gap-1">
+            <div className="w-2 h-2 rounded-full bg-status-offline" />
             <span className="text-muted-foreground">Offline</span>
           </div>
         </div>
